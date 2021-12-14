@@ -114,5 +114,8 @@ applyGlobalStyle(css`
 `);
 
 window.addEventListener('load', () => {
-  render(() => <ComponentCatalogPage />, document.getElementById('app'));
+  const appDiv = document.createElement('app');
+  appDiv.id = 'app';
+  document.body.appendChild(appDiv);
+  render(() => <ComponentCatalogPage />, appDiv);
 });
