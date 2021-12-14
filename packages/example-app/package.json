@@ -7,8 +7,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve",
-    "visor": "visor serve",
-    "visor:build": "visor build"
+    "visor": "alumina-visor serve",
+    "visor:build": "alumina-visor build"
   },
   "dependencies": {
     "alumina": "^0.1.8"
