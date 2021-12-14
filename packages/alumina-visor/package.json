@@ -1,0 +1,26 @@
+{
+  "name": "alumina-visor",
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": [
+    "src",
+    "build.js"
+  ],
+  "bin": {
+    "visor": "build.js"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.2",
+    "estrella": "^1.4.1",
+    "fs-extra": "^10.0.0",
+    "servor": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.12",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "peerDependencies": {
+    "alumina": "^0.1.8"
+  }
+}
