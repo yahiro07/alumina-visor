@@ -1,6 +1,6 @@
 {
   "name": "visor-alumina-dev",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
   "private": true,
@@ -8,6 +8,12 @@
     "packages": [
       "packages/*"
     ]
+  },
+  "scripts": {
+    "release:copy_readme": "cp readme.md packages/alumina-visor/readme.md",
+    "release:upver": "yarn workspace alumina-visor version --patch",
+    "release:publish": "yarn workspace alumina-visor publish",
+    "release:all": "yarn release:copy_readme && yarn release:upver && yarn release:publish"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.3.1",
