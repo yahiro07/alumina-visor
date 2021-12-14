@@ -51,7 +51,7 @@ function enumerateVisorVisualEntries() {
 
   const visorEntries = visorFilePaths.map((filePath) => ({
     filePath,
-    importPath: filePath.replace(/.tsx$/, ''),
+    importPath: path.join('../../', filePath.replace(/.tsx$/, '')),
     importVariableName: filePath
       .replace(`${componentsRootDir}/`, '')
       .replace(/.visor.tsx$/, '')
