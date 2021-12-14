@@ -7,7 +7,7 @@
     "build.js"
   ],
   "bin": {
-    "visor": "build.js"
+    "alumina-visor": "build.js"
   },
   "dependencies": {
     "chokidar": "^3.5.2",

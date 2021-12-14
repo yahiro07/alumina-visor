@@ -1,6 +1,6 @@
-# Visor
+# alumina-visor
 
-Visor is a component catalog generator for alumina.
+alumina-visor is a component catalog generator for alumina.
 It is a simpler alternative to storybook.
 
 ## Usage
@@ -10,7 +10,7 @@ npm install alumina-visor
 ```
 
 ```
-visor serve
+alumina-visor serve
 ```
 
 ## Configuration
