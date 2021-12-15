@@ -1,3 +1,4 @@
 {
-  "sourceFolder": "src/components"
+  "sourceFolder": "src/components",
+  "customHtmlTemplate": "src/visor-index-template.html",
 }
