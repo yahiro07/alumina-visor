@@ -41,6 +41,8 @@ const configs = {
   srcDir: `.visor/src`,
   distDir: `.visor/dist`,
   componentsRootDir: visorConfigObject?.sourceFolder || '.',
+  htmlTemplateFilePath: visorConfigObject?.customHtmlTemplate,
+  port: visorConfigObject?.port || 3000,
 };
 
 function enumerateVisorVisualEntries() {
@@ -119,16 +121,27 @@ function launchDebugServer(distDir) {
     fallback: 'index.html',
     reload: true,
     browse: true,
-    port: 3000,
+    port: configs.port,
   });
   console.log('server listening on http://localhost:3000');
 }
 
 function buildCore(isRelease) {
-  const { visorSrcDir, srcDir, distDir } = configs;
+  const { visorSrcDir, srcDir, distDir, htmlTemplateFilePath } = configs;
   fs.copySync(visorSrcDir, srcDir);
   fs.mkdirSync(distDir, { recursive: true });
-  fs.copyFileSync(`${srcDir}/index.html`, `${distDir}/index.html`);
+  if (htmlTemplateFilePath) {
+    const htmlSourceContent = fs.readFileSync(htmlTemplateFilePath, {
+      encoding: 'utf-8',
+    });
+    const htmlModContent = htmlSourceContent.replace(
+      '</body>',
+      `<script src="./index.js"></script></body>`,
+    );
+    fs.writeFileSync(`${distDir}/index.html`, htmlModContent);
+  } else {
+    fs.copyFileSync(`${srcDir}/index.html`, `${distDir}/index.html`);
+  }
 
   enumerateVisorVisualEntries();
 
