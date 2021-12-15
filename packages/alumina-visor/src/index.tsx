@@ -41,6 +41,7 @@ export const ComponentCatalogPage: FC = () => {
   return (
     <div css={style}>
       <div className="selection-area">
+        <h2>VISOR</h2>
         <h3>Components</h3>
         <FlatListSelector
           className="visual-selector"
@@ -70,12 +71,13 @@ const style = css`
   display: flex;
 
   > .selection-area {
-    width: 240px;
+    width: 280px;
     flex-shrink: 0;
     background: #ccc;
-    padding: 15px;
+    padding: 7px;
 
     h3 {
+      margin-top: 5px;
       font-size: 18px;
     }
 
