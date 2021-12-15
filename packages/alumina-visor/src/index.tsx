@@ -5,7 +5,7 @@ import {
   jsx,
   render,
   useEffect,
-  useLocal,
+  useState,
 } from 'alumina';
 import { FlatListSelector } from './FlatListSelector';
 import visorEnumeratedEntries from './visorEnumeratedEntries';
@@ -19,31 +19,35 @@ const visualOptions = Object.keys(visualSource).map((it) => ({
   label: it.replace(/Examples$/, ''),
 }));
 
-export const ComponentCatalogPage: FC = () => {
-  const local = useLocal({
-    selectedVisualKey: '',
-  });
+const storageKey = 'alumina-visor-selected-component-key';
 
-  const currentVisual = visualSource[local.selectedVisualKey || ''];
+export const ComponentCatalogPage: FC = () => {
+  const [selectedVisualKey, setSelectedVisualKeyInternal] = useState('');
+
+  const setSelectedVisualKey = (key: string) => {
+    setSelectedVisualKeyInternal(key);
+    localStorage.setItem(storageKey, key);
+  };
+
+  const currentVisual = visualSource[selectedVisualKey || ''];
 
   useEffect(() => {
-    const storageKey = 'component-catalog-selected-component-key';
     const key = localStorage.getItem(storageKey);
     if (key) {
-      local.selectedVisualKey = key;
+      setSelectedVisualKey(key);
     }
-    return () => localStorage.setItem(storageKey, local.selectedVisualKey);
   }, []);
 
   return (
     <div css={style}>
       <div className="selection-area">
+        <h2>VISOR</h2>
         <h3>Components</h3>
         <FlatListSelector
           className="visual-selector"
           options={visualOptions}
-          value={local.selectedVisualKey}
-          setValue={(value) => (local.selectedVisualKey = value)}
+          value={selectedVisualKey}
+          setValue={setSelectedVisualKey}
           size={30}
         />
       </div>
@@ -67,12 +71,13 @@ const style = css`
   display: flex;
 
   > .selection-area {
-    width: 240px;
+    width: 280px;
     flex-shrink: 0;
     background: #ccc;
-    padding: 15px;
+    padding: 7px;
 
     h3 {
+      margin-top: 5px;
       font-size: 18px;
     }
 
