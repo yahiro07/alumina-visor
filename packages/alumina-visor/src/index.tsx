@@ -19,18 +19,23 @@ const visualOptions = Object.keys(visualSource).map((it) => ({
   label: it.replace(/Examples$/, ''),
 }));
 
+const storageKey = 'alumina-visor-selected-component-key';
+
 export const ComponentCatalogPage: FC = () => {
-  const [selectedVisualKey, setSelectedVisualKey] = useState('');
+  const [selectedVisualKey, setSelectedVisualKeyInternal] = useState('');
+
+  const setSelectedVisualKey = (key: string) => {
+    setSelectedVisualKeyInternal(key);
+    localStorage.setItem(storageKey, key);
+  };
 
   const currentVisual = visualSource[selectedVisualKey || ''];
 
   useEffect(() => {
-    const storageKey = 'alumina-visor-selected-component-key';
     const key = localStorage.getItem(storageKey);
     if (key) {
       setSelectedVisualKey(key);
     }
-    return () => localStorage.setItem(storageKey, selectedVisualKey);
   }, []);
 
   return (
