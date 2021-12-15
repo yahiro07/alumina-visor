@@ -36,7 +36,7 @@ If the config file is not exist, all `.visor.tsx` files under current directory 
 
 `customHtmlTemplate` is used to replace html file for the page.
 
-`port` is the port for debug server.
+Port for debug server is specified by `port`. the default is port 3000.
 
 
 ## Visor file example
