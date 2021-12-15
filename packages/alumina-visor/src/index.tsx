@@ -5,7 +5,7 @@ import {
   jsx,
   render,
   useEffect,
-  useLocal,
+  useState,
 } from 'alumina';
 import { FlatListSelector } from './FlatListSelector';
 import visorEnumeratedEntries from './visorEnumeratedEntries';
@@ -20,19 +20,17 @@ const visualOptions = Object.keys(visualSource).map((it) => ({
 }));
 
 export const ComponentCatalogPage: FC = () => {
-  const local = useLocal({
-    selectedVisualKey: '',
-  });
+  const [selectedVisualKey, setSelectedVisualKey] = useState('');
 
-  const currentVisual = visualSource[local.selectedVisualKey || ''];
+  const currentVisual = visualSource[selectedVisualKey || ''];
 
   useEffect(() => {
-    const storageKey = 'component-catalog-selected-component-key';
+    const storageKey = 'alumina-visor-selected-component-key';
     const key = localStorage.getItem(storageKey);
     if (key) {
-      local.selectedVisualKey = key;
+      setSelectedVisualKey(key);
     }
-    return () => localStorage.setItem(storageKey, local.selectedVisualKey);
+    return () => localStorage.setItem(storageKey, selectedVisualKey);
   }, []);
 
   return (
@@ -42,8 +40,8 @@ export const ComponentCatalogPage: FC = () => {
         <FlatListSelector
           className="visual-selector"
           options={visualOptions}
-          value={local.selectedVisualKey}
-          setValue={(value) => (local.selectedVisualKey = value)}
+          value={selectedVisualKey}
+          setValue={setSelectedVisualKey}
           size={30}
         />
       </div>
