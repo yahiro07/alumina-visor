@@ -18,9 +18,13 @@ alumina-visor serve
 ### .vissorrc.json
 ```json
 {
-  "sourceFolder": "src/components"
+  "sourceFolder": "src/components",
+  "customHtmlTemplate": "src/visor-index-template.html",
+  "port": 3001
 }
 ```
+
+All fields are optional.
 
 The root directory for the components is specified by `sourceFolder`.
 
@@ -29,6 +33,10 @@ All `.visor.tsx` files under this directory are enumerated.
 The component path shown in the UI is relative to this directory.
 
 If the config file is not exist, all `.visor.tsx` files under current directory are enumerated.
+
+`customHtmlTemplate` is used to replace html file for the page.
+
+`port` is the port for debug server.
 
 
 ## Visor file example
