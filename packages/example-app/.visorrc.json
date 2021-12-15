@@ -1,4 +1,5 @@
 {
   "sourceFolder": "src/components",
   "customHtmlTemplate": "src/visor-index-template.html",
+  "port": 3001
 }

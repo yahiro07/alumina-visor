@@ -42,6 +42,7 @@ const configs = {
   distDir: `.visor/dist`,
   componentsRootDir: visorConfigObject?.sourceFolder || '.',
   htmlTemplateFilePath: visorConfigObject?.customHtmlTemplate,
+  port: visorConfigObject?.port || 3000,
 };
 
 function enumerateVisorVisualEntries() {
@@ -120,7 +121,7 @@ function launchDebugServer(distDir) {
     fallback: 'index.html',
     reload: true,
     browse: true,
-    port: 3000,
+    port: configs.port,
   });
   console.log('server listening on http://localhost:3000');
 }
