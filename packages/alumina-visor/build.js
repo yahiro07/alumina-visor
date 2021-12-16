@@ -123,7 +123,7 @@ function launchDebugServer(distDir) {
     browse: true,
     port: configs.port,
   });
-  console.log('server listening on http://localhost:3000');
+  console.log(`server listening on http://localhost:${configs.port}`);
 }
 
 function buildCore(isRelease) {
