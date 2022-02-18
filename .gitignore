@@ -6,3 +6,4 @@ yarn-error.log
 .vscode/
 .visor
 /packages/alumina-visor/readme.md
+.history/
