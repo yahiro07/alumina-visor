@@ -11,7 +11,7 @@
     "visor:build": "alumina-visor build"
   },
   "dependencies": {
-    "alumina": "^0.1.8"
+    "alumina": "^0.1.11"
   },
   "devDependencies": {
     "html-webpack-plugin": "^5.5.0",

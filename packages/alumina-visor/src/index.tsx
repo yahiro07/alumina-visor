@@ -39,23 +39,23 @@ export const ComponentCatalogPage: FC = () => {
   }, []);
 
   return (
-    <div css={style}>
-      <div className="selection-area">
+    <div class={style}>
+      <div class="selection-area">
         <h2>VISOR</h2>
         <h3>Components</h3>
         <FlatListSelector
-          className="visual-selector"
+          class="visual-selector"
           options={visualOptions}
           value={selectedVisualKey}
           setValue={setSelectedVisualKey}
           size={30}
         />
       </div>
-      <div className="preview-area">
+      <div class="preview-area">
         {currentVisual && (
-          <div className="preview-content">
+          <div class="preview-content">
             {Object.entries(currentVisual).map(([key, value]) => (
-              <div className="row" key={key}>
+              <div class="row" key={key}>
                 {typeof value === 'function' ? value({}) : value}
               </div>
             ))}
